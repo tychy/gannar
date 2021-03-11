@@ -23,7 +23,8 @@ python main.py test # unittestが走る
 
 ・体力が全回復した時通知
 
-TODO
+## TODO
+
 ・本拠地が攻められた時通知
 
 ・自分の周りで動きがあった時通知
