@@ -1,24 +1,18 @@
-import sys
-import os
-import pickle
-from connect import session
+from state import State, Health
+from fileio import load, gen
+from alert import AlertHandle
+from main import routine
 
-def gen(name):
-    data = session()
-    with open(os.path.join("test", name+".pickle"), "wb") as f:
-        pickle.dump(data, f)
+import unittest
 
-def main():
-    args = sys.argv
-    if(args[1] == "gen"):
-        if(args[2] == ""):
-            raise Exception("第2引数がありません")
-        else:
-            gen(args[2])
-    else:
-        raise Exception("定義されていない引数です")
-    return 
+
+class NoWarTestCase(unittest.TestCase):
+    def testNoWar(self):
+        name = "nowar"
+        expect = State.WAIT
+        handler = AlertHandle(load(name))
+        self.assertEqual(handler.state, expect)
 
 if __name__ == "__main__":
-    main()
+    unittest.main()
 
