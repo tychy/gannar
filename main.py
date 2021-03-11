@@ -1,17 +1,16 @@
-from state import *
-from connect import *
-from parser import *
+from state import State, Alert, Health
+from connect import session
+from parser import checkState, checkHealth, checkGamma
 from alert import AlertHandle
-from parser import *
 
 def main():
-    t_spl = session()
+    data = session()
     # 開始前なら終了
-    if(checkState(t_spl) == State.WAIT):
+    if(checkState(data) == State.WAIT):
         print("WAIT")
         return
     handler = AlertHandle()
-    handler.health = checkHealth(t_spl)
+    handler.health = checkHealth(data)
     return 
 
 if __name__ == "__main__":

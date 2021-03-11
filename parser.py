@@ -1,5 +1,5 @@
 import re
-from state import *
+from state import State, Health
 
 def checkState(data):
     pattern = re.compile(r'に開始します。')
