@@ -9,14 +9,15 @@ def sendLineNotify(notification_message):
     data = {'message': f'message: {notification_message}'}
     requests.post(line_notify_api, headers = headers, data = data)
 
-def session():
+def session(mode=1):
     gurl = "http://cgi1.plala.or.jp/~ssdi/gannar.cgi"
     gid = os.environ.get('GANNAR_ID')
     gkey = os.environ.get('GANNAR_KEY')
 
     cert = {
         'gnm':gid,
-        'gpw':gkey
+        'gpw':gkey,
+        'mode':mode
     }
     s = requests.Session()
     r = s.post(gurl, data = cert)

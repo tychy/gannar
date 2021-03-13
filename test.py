@@ -12,6 +12,11 @@ class NoWarTestCase(unittest.TestCase):
         expect = State.WAIT
         handler = AlertHandle(load(name))
         self.assertEqual(handler.state, expect)
+    def testHealthOne(self):
+        name = "health1"
+        handler = AlertHandle(load(name))
+        self.assertEqual(handler.state, State.RUN)
+        self.assertEqual(handler.health, Health.NOFULL)
 
 if __name__ == "__main__":
     unittest.main()

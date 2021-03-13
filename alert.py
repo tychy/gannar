@@ -6,7 +6,7 @@ class AlertHandle:
 
     def __init__(self, data):
         self.state = checkState(data)
-        self.health = checkHealth(data)
+        self.health= checkHealth(data)
         return
 
     def run_assert(self):

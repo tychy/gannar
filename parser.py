@@ -22,8 +22,13 @@ def checkHealth(data):
         idx = 0
         while(idx < len(t)):
             if t[idx] >='1' and t[idx] <= '2': 
-                health = int(t[idx:idx+2])
-                maxhealth = int(t[idx+3:idx+5])
+                if(t[idx+1] == '/'):
+                    health = int(t[idx:idx+1])
+                    idx = idx + 2
+                else:
+                    health = int(t[idx:idx+2])
+                    idx = idx + 3
+                maxhealth = int(t[idx:idx+2])
                 if(health == maxhealth and health > 0 and maxhealth > 0):
                     return Health.FULL
                 else:
